@@ -96,7 +96,7 @@ static void set_phone(std::string &var, const std::string &msg)
         std::getline(std::cin, input);
         if(!validate_phone(input))
         {
-            std::cout << msg << " must be digit & max 10 characters." << std::endl;
+            std::cout << msg << " must be digit & max 9 characters." << std::endl;
         }
         else
         {
