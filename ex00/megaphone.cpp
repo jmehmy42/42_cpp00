@@ -19,7 +19,7 @@ static void ft_upper(const std::string &str)
     size_t i;
 
     i = 0;
-    while(i < str.lenght())
+    while(i < str.length())
     {
         c = str[i];
         if(c >= 'a' && c <= 'z')
