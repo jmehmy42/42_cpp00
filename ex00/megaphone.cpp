@@ -15,16 +15,12 @@
 
 static void ft_upper(const std::string &str)
 {
-    char c;
     size_t i;
 
     i = 0;
     while(i < str.length())
     {
-        c = str[i];
-        if(c >= 'a' && c <= 'z')
-            c = c - 32;
-        std::cout << c;
+        std::cout << (char)std::toupper(str[i]);
         i++;
     }
 }
