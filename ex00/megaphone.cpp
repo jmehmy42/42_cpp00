@@ -11,16 +11,17 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
 
-static void ft_upper(const std::string &str)
+static void ft_upper(char *str)
 {
-    size_t i;
+    int i;
 
     i = 0;
-    while(i < str.length())
+    while(str[i])
     {
-        std::cout << (char)std::toupper(str[i]);
+        if(str[i] >= 'a' && str[i] <= 'z')
+            str[i] = str[i] - 32;
+        std::cout << str[i];
         i++;
     }
 }

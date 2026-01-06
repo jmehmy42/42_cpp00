@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-24 15:39:23 by jmehmy            #+#    #+#             */
-/*   Updated: 2025-12-24 15:39:23 by jmehmy           ###   ########.fr       */
+/*   Created: 2026-01-06 08:42:10 by jmehmy            #+#    #+#             */
+/*   Updated: 2026-01-06 08:42:10 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ class PhoneBook {
     private:
         Contact contacts[8];
         int count;
-        int oldest;
     public:
         PhoneBook();
         void addContact();
         void searchContact();
 };
-
-
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-24 15:38:05 by jmehmy            #+#    #+#             */
-/*   Updated: 2025-12-24 15:38:05 by jmehmy           ###   ########.fr       */
+/*   Created: 2026-01-06 08:42:01 by jmehmy            #+#    #+#             */
+/*   Updated: 2026-01-06 08:42:01 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 PhoneBook::PhoneBook()
 {
     count = 0;
-    oldest = 0;
 }
 
 static std::string format_str(const std::string &str)
@@ -38,29 +37,29 @@ void Contact::display_contact()
 void PhoneBook::addContact()
 {
     int index;
-    if(count < 8)
-        index = count;
-    else
-        index = oldest;
+    index = count % 8; 
     contacts[index].setContact();
-    if(count < 8)
-        count++;
-    else
-        oldest = (oldest + 1) % 8;
-    std::cout << "Contact added phonebook successfully" << std::endl;
+    count++;
+    std::cout << "Contact added to phonebook successfully" << std::endl;
 }
 
 void PhoneBook::searchContact()
 {
     int i;
     int index;
+    int total;
+    std::string input;
 
     i = 0;
+    if(count < 8)
+        total = count;
+    else
+        total = 8;
     std::cout << std::setw(10) << "Index" << "|"
             << std::setw(10) << "First Name" <<  "|"
             << std::setw(10) << "Last Name" <<  "|"
             << std::setw(10) << "Nickname" << std::endl;
-    while (i < count)
+    while (i < total)
     {
         std::cout << std::setw(10) << i << "|"
                   << std::setw(10) << format_str(contacts[i].get_first_name()) << "|"
@@ -68,13 +67,22 @@ void PhoneBook::searchContact()
                   << std::setw(10) << format_str(contacts[i].get_nickname()) << std::endl;
         i++;
     }
-
     std::cout << "Enter index of the contact: ";
-    std::cin >> index;
-    std::cin.ignore();
+    while(std::getline(std::cin, input))
+    {
 
-    if(index < 0 || index >= count)
-        std::cout << "invalid index"<<std::endl;
-    else
+        if( input.length() != 1 || !(isdigit(input[0])))
+        {
+            std::cout << "Wrong index : ";
+            continue;
+        }
+        index = input[0] - '0';
+        if( index < 0 || index >= total)
+        {
+            std::cout << "Wrong index : ";
+            continue;
+        }
         contacts[index].display_contact();
+        break;
+    }
 }

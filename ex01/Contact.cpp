@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-24 15:38:14 by jmehmy            #+#    #+#             */
-/*   Updated: 2025-12-24 15:38:14 by jmehmy           ###   ########.fr       */
+/*   Created: 2026-01-06 08:41:19 by jmehmy            #+#    #+#             */
+/*   Updated: 2026-01-06 08:41:19 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool validate_phone(std::string &input)
     size_t i;
 
     i = 0;
-    if (input.empty() || input.length() > 9 || input[0] == '0')
+    if (input.empty() || input.length() != 9 || input[0] == '0')
         return false ;
     while( i < input.length())
     {
@@ -96,7 +96,7 @@ static void set_phone(std::string &var, const std::string &msg)
         std::getline(std::cin, input);
         if(!validate_phone(input))
         {
-            std::cout << msg << " must be digit & max 9 characters." << std::endl;
+            std::cout << msg << " must be digit or max 9 characters." << std::endl;
         }
         else
         {
